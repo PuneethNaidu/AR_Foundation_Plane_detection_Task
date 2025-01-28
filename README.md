@@ -199,8 +199,35 @@ Scripts Explanation:
       If they are, it continuously adjusts the rotation of bodyPartName (the TMP_Text object displaying the body part name) to face the player.
       The LookAt(player) method makes the text face the player's position, and then the text is rotated by 180 degrees on the Y-axis to ensure it faces the player correctly.
 
+Demo Video Explanation :
+  Video 1: Application Workflow and Model Interaction
+    This video explains the application's startup process and the steps involved in selecting and placing a model.
+    Model Selection & Plane Detection:
+      After choosing a model, the application takes some time to detect plane surfaces (both horizontal and vertical).
+      Once a horizontal plane is detected, the placement indicator turns green.
+      When the user taps on the scene, the model spawns in a walking animation.
+      Similarly, when vertical planes are detected, the placement indicator turns blue.
+      Upon tapping, the model appears in a running animation.
+    Model Scaling Based on Plane Size:
+      The size of the spawned model is determined by the detected vertical plane's dimensions.
+      Since multiple vertical planes are detected, subsequent models have varying sizes.
+    Interaction with Models:
+      The user can interact with different body parts of the models using a double tap gesture.
+      This triggers an audio feedback, announcing the name of the tapped body part.
+    Model Count Display:
+      The count of spawned models is dynamically updated in the UI.
 
-Demo Video : 
+  Video 2: Reset Functionality & Persistence of Model Count
+      This video showcases how the application manages spawned models and persists data after reopening.
+    Reset Button Functionality:
+      Clicking the Reset button removes all spawned models.
+      Once cleared, detected planes are visible again, and the placement indicator resumes changing colors based on detected surfaces.
+      The model count resets to 0.
+    Persistence of Model Count After Restart:
+      After clearing, new models can be spawned again.
+      When the application is closed and reopened, the count of previously spawned models is retained.
+      If the models are cleared before closing, the count remains 0 upon reopening.
+
 
 
 App Functionality and Usage
@@ -231,24 +258,35 @@ The plane size is automatically calculated when detecting a vertical plane, ensu
    4.Plane Detection and Placement Indicator:
       Plane Detection begins once the UI_Menu is closed, with visual feedback:
         Green Indicator: Horizontal plane detected (e.g., floor or flat surfaces).
-      Blue Indicator: Vertical plane detected (e.g., walls).
-        The Placement Indicator appears based on the detected plane type.
+        
+  ![Floor_detected_rectile](https://github.com/user-attachments/assets/4989d7a5-0ad1-411a-9b84-dc06b54379d3) 
+       Blue Indicator: Vertical plane detected (e.g., walls).
+       
+  ![Wall_detected_rectile](https://github.com/user-attachments/assets/b25945ef-1d27-4a24-981c-0b5cabe007c0)
+  
+   The Placement Indicator appears based on the detected plane type.
 
   5. Spawning Models:
      Single tap on the screen to spawn a model:
        If a Horizontal Plane is detected:
          The model is instantiated with a walking animation.
+     
+     ![Models_Walking](https://github.com/user-attachments/assets/e9768865-fb31-4b54-9a5a-b47fddc5a9fa)
+
        If a Vertical Plane is detected:
          The model is instantiated with a running animation.
          The model is resized to fit the scale of the vertical plane.
          You can move around in the real-world environment and spawn multiple models.
+     
+     ![Same_Model_running_Size fit](https://github.com/user-attachments/assets/cc500feb-2fa5-4830-83db-a0eeb022ee32)
 
-   6. Body Part Interaction:
+
+   7. Body Part Interaction:
         Audio Feedback for body part interaction:
           Double tap on a model's body part to hear the name of the body part.
           The name of the body part is displayed above the model.
 
-   7. Reset Functionality:
+   8. Reset Functionality:
         Open the UI_Menu and click on the Reset Button to:
           Clear all spawned models.
           Reset the Count to 0.
